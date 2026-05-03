@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocLocal — Explore the UAE Through Local Eyes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EED8;
+    --sand-dark: #E8DFC0;
+    --terracotta: #C4633A;
+    --terracotta-light: #D97B52;
+    --deep: #1C1410;
+    --warm-dark: #2E1F14;
+    --gold: #B8922A;
+    --gold-light: #D4AB40;
+    --sage: #6B8C6E;
+    --cream: #FAF6EC;
+    --text-muted: #7A6A58;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(250,246,236,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,146,42,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 900; letter-spacing: -0.5px;
+    color: var(--deep);
+  }
+  .nav-logo span { color: var(--terracotta); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--deep); }
+  .nav-cta {
+    background: var(--terracotta) !important;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--terracotta-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 48px 80px 48px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow-line {
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero-eyebrow span {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: var(--deep);
+    margin-bottom: 24px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-size: 17px; font-weight: 300; line-height: 1.7;
+    color: var(--text-muted); max-width: 420px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    padding: 14px 28px;
+    border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+
+  .btn-secondary {
+    color: var(--deep);
+    font-size: 14px; font-weight: 500;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .btn-secondary:hover { color: var(--terracotta); }
+
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--sand-dark);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: var(--deep);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px; color: var(--text-muted);
+    font-weight: 400; margin-top: 4px; line-height: 1.4;
+  }
+
+  /* HERO RIGHT — visual panel */
+  .hero-right {
+    position: relative;
+    background: var(--warm-dark);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .geo-pattern {
+    position: absolute; inset: 0;
+    opacity: 0.07;
+    background-image:
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 40px 40px;
+  }
+
+  .hero-card-stack {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 16px;
+    padding: 48px;
+    width: 100%; max-width: 420px;
+  }
+
+  .guide-card {
+    background: rgba(250,246,236,0.07);
+    border: 1px solid rgba(184,146,42,0.25);
+    border-radius: 4px;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    transform: translateX(0);
+    transition: transform 0.3s;
+  }
+  .guide-card:hover { transform: translateX(4px); }
+
+  .guide-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  }
+  .guide-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--terracotta);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .guide-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; color: var(--sand); font-weight: 700;
+  }
+  .guide-loc {
+    font-size: 11px; color: rgba(245,238,216,0.5);
+    margin-top: 2px;
+  }
+  .guide-desc {
+    font-size: 12px; color: rgba(245,238,216,0.65);
+    line-height: 1.6; margin-bottom: 12px;
+  }
+  .guide-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .guide-tag {
+    font-size: 10px; padding: 3px 8px;
+    border: 1px solid rgba(184,146,42,0.3);
+    color: var(--gold-light);
+    border-radius: 2px; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(107,140,110,0.2);
+    border: 1px solid rgba(107,140,110,0.4);
+    border-radius: 2px; padding: 4px 10px;
+    font-size: 10px; color: #8DC490;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #8DC490;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .status-card {
+    background: rgba(250,246,236,0.04);
+    border: 1px solid rgba(184,146,42,0.15);
+    border-radius: 4px; padding: 16px;
+    margin-top: 4px;
+  }
+  .status-title {
+    font-size: 12px; color: var(--sand); font-weight: 500; margin-bottom: 10px;
+  }
+  .crowd-bar-wrap {
+    height: 4px; background: rgba(245,238,216,0.1);
+    border-radius: 99px; margin-bottom: 6px; overflow: hidden;
+  }
+  .crowd-bar { height: 100%; border-radius: 99px; background: var(--gold); width: 42%; }
+  .crowd-label {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: rgba(245,238,216,0.4);
+  }
+
+  /* SECTION SHARED */
+  section { padding: 100px 48px; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .section-label-line { width: 24px; height: 1px; background: var(--gold); }
+  .section-label span {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 900; line-height: 1.1;
+    letter-spacing: -1px; color: var(--deep);
+    margin-bottom: 16px;
+  }
+  h2 em { font-style: italic; color: var(--terracotta); }
+
+  /* HOW IT WORKS */
+  .how { background: var(--sand); }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .how-sub {
+    font-size: 17px; color: var(--text-muted); font-weight: 300;
+    max-width: 480px; line-height: 1.7; margin-bottom: 64px;
+  }
+  .steps {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+  }
+  .step {
+    background: var(--cream);
+    padding: 36px 32px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .step:hover { background: white; }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 900;
+    color: var(--sand-dark); line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--deep);
+  }
+  .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* WHO */
+  .who { background: var(--cream); }
+  .who-inner { max-width: 1100px; margin: 0 auto; }
+  .personas {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    margin-top: 56px;
+  }
+  .persona {
+    border: 1px solid var(--sand-dark);
+    padding: 28px 24px;
+    border-radius: 2px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .persona:hover { border-color: var(--terracotta); transform: translateY(-4px); }
+  .persona-icon { font-size: 28px; margin-bottom: 16px; }
+  .persona-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700; margin-bottom: 8px;
+  }
+  .persona-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* LIVE FEATURE */
+  .live-section { background: var(--warm-dark); position: relative; overflow: hidden; }
+  .live-geo {
+    position: absolute; inset: 0; opacity: 0.05;
+    background-image: repeating-linear-gradient(0deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 60px),
+      repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 60px);
+  }
+  .live-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .live-inner h2 { color: var(--sand); }
+  .live-inner h2 em { color: var(--gold-light); }
+  .live-sub { font-size: 16px; color: rgba(245,238,216,0.55); font-weight: 300; line-height: 1.7; margin-bottom: 32px; }
+  .live-features { display: flex; flex-direction: column; gap: 20px; }
+  .live-feat { display: flex; gap: 14px; align-items: flex-start; }
+  .live-feat-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid rgba(184,146,42,0.3);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .live-feat-text h4 { font-size: 14px; color: var(--sand); font-weight: 500; margin-bottom: 4px; }
+  .live-feat-text p { font-size: 13px; color: rgba(245,238,216,0.5); line-height: 1.6; }
+
+  .mock-phone {
+    background: rgba(250,246,236,0.05);
+    border: 1px solid rgba(184,146,42,0.2);
+    border-radius: 8px; padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .mock-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 14px;
+    background: rgba(250,246,236,0.04);
+    border: 1px solid rgba(184,146,42,0.12);
+    border-radius: 3px;
+  }
+  .mock-place { font-size: 13px; color: var(--sand); font-weight: 500; }
+  .mock-status { font-size: 11px; padding: 3px 8px; border-radius: 2px; }
+  .s-quiet { background: rgba(107,140,110,0.2); color: #8DC490; }
+  .s-moderate { background: rgba(184,146,42,0.2); color: var(--gold-light); }
+  .s-busy { background: rgba(196,99,58,0.2); color: var(--terracotta-light); }
+
+  /* WAITLIST */
+  .waitlist {
+    background: var(--sand);
+    text-align: center;
+  }
+  .waitlist-inner { max-width: 600px; margin: 0 auto; }
+  .waitlist h2 { margin-bottom: 14px; }
+  .waitlist-sub {
+    font-size: 17px; color: var(--text-muted); font-weight: 300;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+  .waitlist-form {
+    display: flex; gap: 0; max-width: 440px; margin: 0 auto 16px;
+    border: 1.5px solid var(--deep); border-radius: 2px; overflow: hidden;
+  }
+  .waitlist-form input {
+    flex: 1; padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    background: white; border: none; outline: none; color: var(--deep);
+  }
+  .waitlist-form input::placeholder { color: var(--text-muted); }
+  .waitlist-form button {
+    padding: 14px 22px;
+    background: var(--deep); color: var(--sand);
+    border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .waitlist-form button:hover { background: var(--warm-dark); }
+  .waitlist-note { font-size: 12px; color: var(--text-muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    padding: 40px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 900; color: var(--sand);
+  }
+  .footer-logo span { color: var(--terracotta); }
+  .footer-right { font-size: 12px; color: rgba(245,238,216,0.35); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 400px; display: none; }
+    .hero-left { padding: 60px 24px; }
+    section { padding: 64px 24px; }
+    .steps { grid-template-columns: 1fr; gap: 2px; }
+    .personas { grid-template-columns: 1fr 1fr; }
+    .live-inner { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Loc<span>Local</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#who">Who it's for</a>
+    <a href="#live">Live status</a>
+    <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Launching in UAE · 2025</span>
+    </div>
+    <h1>The UAE, seen through <em>local eyes</em></h1>
+    <p class="hero-sub">LocLocal connects international tourists with UAE locals — for guided experiences, live destination updates, and hidden gems you'll never find on TripAdvisor. The UAE is just the beginning.</p>
+    <div class="hero-actions">
+      <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+      <a href="#how" class="btn-secondary">See how it works →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Emirates to<br>explore</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Local guides,<br>real people</div>
+      </div>
+      <div>
+        <div class="stat-num">Live</div>
+        <div class="stat-label">Real-time venue<br>status & updates</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="geo-pattern"></div>
+    <div class="hero-card-stack">
+      <div class="guide-card">
+        <div class="guide-card-header">
+          <div class="guide-avatar">🇦🇪</div>
+          <div>
+            <div class="guide-name">Mohammed Al Mazrouei</div>
+            <div class="guide-loc">Abu Dhabi · Local guide</div>
+          </div>
+        </div>
+        <div class="guide-desc">"I will show you the real Abu Dhabi — the souks my grandfather walked, the desert spots no tourist map has ever listed."</div>
+        <div class="guide-tags">
+          <span class="guide-tag">Desert</span>
+          <span class="guide-tag">Heritage</span>
+          <span class="guide-tag">Food</span>
+          <span class="guide-tag">Arabic</span>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="live-badge"><div class="live-dot"></div>Live now</div>
+        <div class="status-title">🏜 Liwa Date Festival · Al Dhafra</div>
+        <div class="crowd-bar-wrap"><div class="crowd-bar"></div></div>
+        <div class="crowd-label"><span>Quiet</span><span>Moderate ← now</span><span>Packed</span></div>
+      </div>
+
+      <div class="guide-card" style="opacity:0.7">
+        <div class="guide-card-header">
+          <div class="guide-avatar" style="background:var(--sage)">🌿</div>
+          <div>
+            <div class="guide-name">Fatima Al Hashimi</div>
+            <div class="guide-loc">Fujairah · Heritage host</div>
+          </div>
+        </div>
+        <div class="guide-desc">"Come taste the real Emirati breakfast, learn to weave a palm frond, and hear stories from our mountains."</div>
+        <div class="guide-tags">
+          <span class="guide-tag">Culture</span>
+          <span class="guide-tag">Crafts</span>
+          <span class="guide-tag">Mountains</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="section-label fade-up"><div class="section-label-line"></div><span>How it works</span></div>
+    <h2 class="fade-up">Three steps to an <em>unforgettable</em> UAE trip</h2>
+    <p class="how-sub fade-up">No tour buses. No scripted itineraries. Just you, a local who knows their city, and the UAE the way it really is.</p>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">01</div>
+        <div class="step-title">Set your budget & interests</div>
+        <div class="step-desc">Tell us what you love — desert adventures, local food, cultural heritage, family activities. Set your budget. We'll match you with the right local guide.</div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <div class="step-title">Your guide builds the plan</div>
+        <div class="step-desc">Your local guide creates a custom itinerary — what to do, where to eat, when to arrive. They pick you up in their car and take you to places only a local knows.</div>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.2s">
+        <div class="step-num">03</div>
+        <div class="step-title">Live updates, real experiences</div>
+        <div class="step-desc">Check real-time crowd levels before you visit. Chat with locals already at the venue. Book experiences, rate your guide, and discover the UAE authentically.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who" id="who">
+  <div class="who-inner">
+    <div class="section-label fade-up"><div class="section-label-line"></div><span>Who it's for</span></div>
+    <h2 class="fade-up">Built for <em>everyone</em> in the journey</h2>
+    <div class="personas">
+      <div class="persona fade-up">
+        <div class="persona-icon">✈️</div>
+        <div class="persona-title">International Tourists</div>
+        <div class="persona-desc">Discover the UAE that guidebooks miss. Connect with real locals, explore hidden gems, and travel with confidence.</div>
+      </div>
+      <div class="persona fade-up" style="transition-delay:0.08s">
+        <div class="persona-icon">🧭</div>
+        <div class="persona-title">Local Guides</div>
+        <div class="persona-desc">Earn flexible income doing what you love — showing the world your home. Students, professionals, retirees all welcome.</div>
+      </div>
+      <div class="persona fade-up" style="transition-delay:0.16s">
+        <div class="persona-icon">🏪</div>
+        <div class="persona-title">Local Businesses</div>
+        <div class="persona-desc">Reach tourists who are actively planning their trip. Post live updates, get discovered, and grow your tourist revenue.</div>
+      </div>
+      <div class="persona fade-up" style="transition-delay:0.24s">
+        <div class="persona-icon">🏛️</div>
+        <div class="persona-title">Heritage Hosts</div>
+        <div class="persona-desc">Elders and retirees who share UAE traditions, crafts, and stories — turning cultural knowledge into meaningful income.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE STATUS -->
+<section class="live-section" id="live">
+  <div class="live-inner">
+    <div>
+      <div class="section-label fade-up"><div class="section-label-line" style="background:var(--gold-light)"></div><span style="color:var(--gold-light)">Live intelligence</span></div>
+      <h2 class="fade-up">Know before<br>you <em>go</em></h2>
+      <p class="live-sub fade-up">LocLocal shows you what's happening at any venue right now — crowd levels, gender mix, live updates from people actually there.</p>
+      <div class="live-features">
+        <div class="live-feat fade-up">
+          <div class="live-feat-icon">📡</div>
+          <div class="live-feat-text">
+            <h4>Real-time crowd status</h4>
+            <p>See if a venue is quiet, moderate, or packed before you leave your hotel.</p>
+          </div>
+        </div>
+        <div class="live-feat fade-up" style="transition-delay:0.1s">
+          <div class="live-feat-icon">💬</div>
+          <div class="live-feat-text">
+            <h4>Live chat with locals on-site</h4>
+            <p>Ask people who are there right now — is the food good today? How's the vibe?</p>
+          </div>
+        </div>
+        <div class="live-feat fade-up" style="transition-delay:0.2s">
+          <div class="live-feat-icon">📅</div>
+          <div class="live-feat-text">
+            <h4>Event & festival alerts</h4>
+            <p>Never miss a local event. From Liwa Festival to mountain hubs — all in one place.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-phone fade-up">
+      <div style="font-size:11px;color:rgba(245,238,216,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Live · Dubai & Abu Dhabi</div>
+      <div class="mock-row">
+        <div class="mock-place">🏜 Liwa Date Festival</div>
+        <div class="mock-status s-moderate">Moderate</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-place">🕌 Sheikh Zayed Mosque</div>
+        <div class="mock-status s-quiet">Quiet</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-place">🏪 Gold Souk, Dubai</div>
+        <div class="mock-status s-busy">Busy</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-place">🌊 Khor Fakkan Beach</div>
+        <div class="mock-status s-quiet">Quiet</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-place">🎡 Global Village</div>
+        <div class="mock-status s-moderate">Moderate</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-place">🦅 Falcon Souq, AD</div>
+        <div class="mock-status s-quiet">Quiet</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="waitlist-inner">
+    <div class="section-label fade-up" style="justify-content:center"><div class="section-label-line"></div><span>Early access</span><div class="section-label-line"></div></div>
+    <h2 class="fade-up">Be first to <em>explore</em></h2>
+    <p class="waitlist-sub fade-up">LocLocal is launching in the UAE soon. Join the waitlist to get early access — whether you're a tourist, a local guide, or a business.</p>
+    <div class="waitlist-form fade-up">
+      <input type="email" placeholder="your@email.com" id="email-input">
+      <button onclick="handleSignup()">Join waitlist</button>
+    </div>
+    <div class="waitlist-note fade-up" id="signup-note">No spam. Just your invite when we launch.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Loc<span>Local</span></div>
+  <div class="footer-right">© 2025 LocLocal · UAE · hello@loclocal.ae</div>
+</footer>
+
+<script>
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Waitlist
+function handleSignup() {
+  const email = document.getElementById('email-input').value;
+  const note = document.getElementById('signup-note');
+  if (!email || !email.includes('@')) {
+    note.textContent = 'Please enter a valid email address.';
+    note.style.color = '#C4633A';
+    return;
+  }
+  note.textContent = '✓ You\'re on the list! We\'ll be in touch soon.';
+  note.style.color = '#6B8C6E';
+  note.style.fontWeight = '500';
+  document.getElementById('email-input').value = '';
+}
+</script>
+
+</body>
+</html>
