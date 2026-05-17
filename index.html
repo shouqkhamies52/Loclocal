@@ -689,19 +689,8 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // Waitlist
 function handleSignup() {
-  const email = document.getElementById('email-input').value;
-  const note = document.getElementById('signup-note');
-  if (!email || !email.includes('@')) {
-    note.textContent = 'Please enter a valid email address.';
-    note.style.color = '#C4633A';
-    return;
-  }
-  note.textContent = '✓ You\'re on the list! We\'ll be in touch soon.';
-  note.style.color = '#6B8C6E';
-  note.style.fontWeight = '500';
-  document.getElementById('email-input').value = '';
+  window.open('https://docs.google.com/forms/d/e/1FAIpQLSf-xXjB8UYq90kDzsKGZcs2QFbxlx1wBln1bassS3roVV-Csg/viewform?usp=header', '_blank');
 }
 </script>
-
 </body>
 </html>
