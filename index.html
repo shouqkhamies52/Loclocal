@@ -21,18 +21,18 @@
     --cream: #FAF6EC;
     --text-muted: #7A6A58;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--deep);
     overflow-x: hidden;
   }
-
+ 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -65,7 +65,7 @@
     transition: background 0.2s !important;
   }
   .nav-cta:hover { background: var(--terracotta-light) !important; }
-
+ 
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -75,13 +75,13 @@
     overflow: hidden;
     padding-top: 80px;
   }
-
+ 
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
     padding: 80px 48px 80px 48px;
     position: relative; z-index: 2;
   }
-
+ 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 10px;
     margin-bottom: 24px;
@@ -93,7 +93,7 @@
     font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--gold);
   }
-
+ 
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(44px, 5vw, 68px);
@@ -107,15 +107,15 @@
     font-style: italic;
     color: var(--terracotta);
   }
-
+ 
   .hero-sub {
     font-size: 17px; font-weight: 300; line-height: 1.7;
     color: var(--text-muted); max-width: 420px;
     margin-bottom: 40px;
   }
-
+ 
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-
+ 
   .btn-primary {
     background: var(--terracotta);
     color: white;
@@ -137,7 +137,7 @@
     transition: transform 0.3s;
   }
   .btn-primary:hover::after { transform: translateX(0); }
-
+ 
   .btn-secondary {
     color: var(--deep);
     font-size: 14px; font-weight: 500;
@@ -149,7 +149,7 @@
     transition: color 0.2s;
   }
   .btn-secondary:hover { color: var(--terracotta); }
-
+ 
   .hero-stats {
     display: flex; gap: 32px; margin-top: 56px;
     padding-top: 32px;
@@ -164,7 +164,7 @@
     font-size: 12px; color: var(--text-muted);
     font-weight: 400; margin-top: 4px; line-height: 1.4;
   }
-
+ 
   /* HERO RIGHT — visual panel */
   .hero-right {
     position: relative;
@@ -172,7 +172,7 @@
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
   }
-
+ 
   .geo-pattern {
     position: absolute; inset: 0;
     opacity: 0.07;
@@ -181,14 +181,14 @@
       repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
     background-size: 40px 40px;
   }
-
+ 
   .hero-card-stack {
     position: relative; z-index: 2;
     display: flex; flex-direction: column; gap: 16px;
     padding: 48px;
     width: 100%; max-width: 420px;
   }
-
+ 
   .guide-card {
     background: rgba(250,246,236,0.07);
     border: 1px solid rgba(184,146,42,0.25);
@@ -199,7 +199,7 @@
     transition: transform 0.3s;
   }
   .guide-card:hover { transform: translateX(4px); }
-
+ 
   .guide-card-header {
     display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
   }
@@ -229,7 +229,7 @@
     border-radius: 2px; letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-
+ 
   .live-badge {
     display: inline-flex; align-items: center; gap: 5px;
     background: rgba(107,140,110,0.2);
@@ -248,7 +248,7 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.7); }
   }
-
+ 
   .status-card {
     background: rgba(250,246,236,0.04);
     border: 1px solid rgba(184,146,42,0.15);
@@ -267,10 +267,10 @@
     display: flex; justify-content: space-between;
     font-size: 10px; color: rgba(245,238,216,0.4);
   }
-
+ 
   /* SECTION SHARED */
   section { padding: 100px 48px; }
-
+ 
   .section-label {
     display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
   }
@@ -279,7 +279,7 @@
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--gold); font-weight: 500;
   }
-
+ 
   h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(32px, 3.5vw, 52px);
@@ -288,7 +288,7 @@
     margin-bottom: 16px;
   }
   h2 em { font-style: italic; color: var(--terracotta); }
-
+ 
   /* HOW IT WORKS */
   .how { background: var(--sand); }
   .how-inner { max-width: 1100px; margin: 0 auto; }
@@ -317,7 +317,7 @@
     font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--deep);
   }
   .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
+ 
   /* WHO */
   .who { background: var(--cream); }
   .who-inner { max-width: 1100px; margin: 0 auto; }
@@ -339,7 +339,7 @@
     font-size: 17px; font-weight: 700; margin-bottom: 8px;
   }
   .persona-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-
+ 
   /* LIVE FEATURE */
   .live-section { background: var(--warm-dark); position: relative; overflow: hidden; }
   .live-geo {
@@ -366,7 +366,7 @@
   }
   .live-feat-text h4 { font-size: 14px; color: var(--sand); font-weight: 500; margin-bottom: 4px; }
   .live-feat-text p { font-size: 13px; color: rgba(245,238,216,0.5); line-height: 1.6; }
-
+ 
   .mock-phone {
     background: rgba(250,246,236,0.05);
     border: 1px solid rgba(184,146,42,0.2);
@@ -385,7 +385,7 @@
   .s-quiet { background: rgba(107,140,110,0.2); color: #8DC490; }
   .s-moderate { background: rgba(184,146,42,0.2); color: var(--gold-light); }
   .s-busy { background: rgba(196,99,58,0.2); color: var(--terracotta-light); }
-
+ 
   /* WAITLIST */
   .waitlist {
     background: var(--sand);
@@ -418,7 +418,7 @@
   }
   .waitlist-form button:hover { background: var(--warm-dark); }
   .waitlist-note { font-size: 12px; color: var(--text-muted); }
-
+ 
   /* FOOTER */
   footer {
     background: var(--deep);
@@ -432,14 +432,14 @@
   }
   .footer-logo span { color: var(--terracotta); }
   .footer-right { font-size: 12px; color: rgba(245,238,216,0.35); }
-
+ 
   /* ANIMATIONS */
   .fade-up {
     opacity: 0; transform: translateY(28px);
     transition: opacity 0.65s ease, transform 0.65s ease;
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
-
+ 
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
@@ -456,7 +456,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Loc<span>Local</span></div>
@@ -467,7 +467,7 @@
     <a href="#waitlist" class="nav-cta">Join the waitlist</a>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
@@ -496,7 +496,7 @@
       </div>
     </div>
   </div>
-
+ 
   <div class="hero-right">
     <div class="geo-pattern"></div>
     <div class="hero-card-stack">
@@ -516,14 +516,14 @@
           <span class="guide-tag">Arabic</span>
         </div>
       </div>
-
+ 
       <div class="status-card">
         <div class="live-badge"><div class="live-dot"></div>Live now</div>
         <div class="status-title">🏜 Liwa Date Festival · Al Dhafra</div>
         <div class="crowd-bar-wrap"><div class="crowd-bar"></div></div>
         <div class="crowd-label"><span>Quiet</span><span>Moderate ← now</span><span>Packed</span></div>
       </div>
-
+ 
       <div class="guide-card" style="opacity:0.7">
         <div class="guide-card-header">
           <div class="guide-avatar" style="background:var(--sage)">🌿</div>
@@ -542,7 +542,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="how-inner">
@@ -568,7 +568,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WHO -->
 <section class="who" id="who">
   <div class="who-inner">
@@ -598,7 +598,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- LIVE STATUS -->
 <section class="live-section" id="live">
   <div class="live-inner">
@@ -659,38 +659,37 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WAITLIST -->
 <section class="waitlist" id="waitlist">
   <div class="waitlist-inner">
     <div class="section-label fade-up" style="justify-content:center"><div class="section-label-line"></div><span>Early access</span><div class="section-label-line"></div></div>
     <h2 class="fade-up">Be first to <em>explore</em></h2>
     <p class="waitlist-sub fade-up">LocLocal is launching in the UAE soon. Join the waitlist to get early access — whether you're a tourist, a local guide, or a business.</p>
-    <div class="waitlist-form fade-up">
-      <input type="email" placeholder="your@email.com" id="email-input">
-      <button onclick="handleSignup()">Join waitlist</button>
+    <div class="fade-up" style="margin-top:24px">
+      <iframe data-tally-src="https://tally.so/embed/aQaKp9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Join the LocLocal Waitlist" style="border:none;max-width:500px;margin:0 auto;display:block"></iframe>
     </div>
-    <div class="waitlist-note fade-up" id="signup-note">No spam. Just your invite when we launch.</div>
+    <div class="waitlist-note fade-up" style="margin-top:16px">No spam. Just your invite when we launch.</div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Loc<span>Local</span></div>
   <div class="footer-right">© 2025 LocLocal · UAE · hello@loclocal.ae</div>
 </footer>
-
+ 
 <script>
 // Fade-up on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-// Waitlist
-function handleSignup() {
-  window.open('https://docs.google.com/forms/d/e/1FAIpQLSf-xXjB8UYq90kDzsKGZcs2QFbxlx1wBln1bassS3roVV-Csg/viewform?usp=header', '_blank');
-}
+ 
+// Tally embed
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
 </script>
+ 
 </body>
 </html>
+ 
